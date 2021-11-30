@@ -1,0 +1,38 @@
+<MainScreen>
+
+    GridLayout:
+        size: root.width, root.height
+        cols: 2
+
+        BoxLayout:
+            size: root.width, root.height
+            Image:
+                allow_stretch: True
+                keep_ratio: False
+                source: "mountains.png"
+        BoxLayout:
+            orientation: "vertical"
+            RelativeLayout:
+                Image:
+                    allow_stretch: True
+                    keep_ratio: False
+                    size_hint: 0.7, 1
+                    pos_hint: {"center_x": 0.5, "y": -0.2}
+                    source: "startrek.png"
+            RelativeLayout:
+                TextInput:
+                    size_hint: 0.45, 0.1
+                    pos_hint: {"x": 0.5, "y": 0.56}
+                    multiline: False
+                Label:
+                    size_hint: 0.25, 0.1
+                    pos_hint: {"x": 0.25, "y": 0.56}
+                    text: "Username:"
+                TextInput:
+                    size_hint: 0.45, 0.1
+                    pos_hint: {"x": 0.5, "y": 0.44}
+                    multiline: False
+                Label:
+                    size_hint: 0.25, 0.1
+                    pos_hint: {"x": 0.25, "y": 0.44}
+                    text: "Password:"
