@@ -1,38 +1,158 @@
 <MainScreen>
-
-    GridLayout:
+    slider_image: 'data/images/slider_cropped.png'
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         size: root.width, root.height
-        cols: 2
-
         BoxLayout:
-            size: root.width, root.height
-            Image:
-                allow_stretch: True
-                keep_ratio: False
-                source: "data/images/mountains.png"
-        BoxLayout:
+#            canvas.before:
+#                Color:
+#                    rgba: (0, 0, 0, 0.2)
+#                Rectangle:
+#                    size: self.size
+#                    pos: self.pos
+            size_hint: 0.6, 0.8
+            anchor_x: "center"
+            anchor_y: "center"
             orientation: "vertical"
-            RelativeLayout:
-                Image:
-                    allow_stretch: True
-                    keep_ratio: False
-                    size_hint: 0.7, 1
-                    pos_hint: {"center_x": 0.5, "y": -0.2}
-                    source: "data/images/startrek.png"
-            RelativeLayout:
-                TextInput:
-                    size_hint: 0.45, 0.1
-                    pos_hint: {"x": 0.5, "y": 0.56}
-                    multiline: False
+            spacing: 5
+            padding: [0, 20, 0, 0]
+            BoxLayout:
+#                canvas.before:
+#                    Color:
+#                        rgba: (0, 0, 1, 0.2)
+#                    Rectangle:
+#                        size: self.size
+#                        pos: self.pos
+                orientation: "vertical"
+                size_hint: 1, 0.4
+                spacing: 5
                 Label:
-                    size_hint: 0.25, 0.1
-                    pos_hint: {"x": 0.25, "y": 0.56}
-                    text: "Username:"
-                TextInput:
-                    size_hint: 0.45, 0.1
-                    pos_hint: {"x": 0.5, "y": 0.44}
-                    multiline: False
+                    text: "How much art do you want?"
+                    font_size: 20
+                    color: (0, 0, 0, 1)
+                StrokeButton:
+                    text: "I want it all yeah yeah yeah, I want it all, I want it all and I want it now..."
+                    stroke_color: (0, 0, 0, 1)
+                    stroke_width: 1.05
+                    color: (0, 0, 0, 1)
+                    stroke_radius: 15
+            BoxLayout:
+#                canvas.before:
+#                    Color:
+#                        rgba: (0, 1, 0, 0.2)
+#                    Rectangle:
+#                        size: self.size
+#                        pos: self.pos
+                orientation: "vertical"
+                size_hint: 1, 0.4
                 Label:
-                    size_hint: 0.25, 0.1
-                    pos_hint: {"x": 0.25, "y": 0.44}
-                    text: "Password:"
+                    text: "How much overlay do you want?"
+                    font_size: 20
+                    color: (0, 0, 0, 1)
+                Slider:
+                    id: slider1
+                    min: 0
+                    max: 1
+                    step: 1
+                    padding: 0.265 * self.size[0]
+                    sensitivity: "all"
+                    cursor_size: (0.5 * self.size[0], self.size[1])
+                    on_value: root.slide_it(*args)
+                    cursor_image: root.slider_image
+            BoxLayout:
+#                canvas.before:
+#                    Color:
+#                        rgba: (1, 0, 0, 0.2)
+#                    Rectangle:
+#                        size: self.size
+#                        pos: self.pos
+                orientation: "vertical"
+                spacing: 5
+                Label:
+                    text: "What art do you want to see?"
+                    font_size: 20
+                    size_hint: 1, .2
+                    color: (0, 0, 0, 1)
+                GridLayout:
+#                    canvas.before:
+#                        Color:
+#                            rgba: (1, 0, 0, 0.4)
+#                        Rectangle:
+#                            size: self.size
+#                            pos: self.pos
+                    cols: 3
+                    spacing: 10
+                    padding: 5
+                    StrokeButton:
+                        text: "Painting"
+                    StrokeButton:
+                        text: "Illustration"
+                    StrokeButton:
+                        text: "Photography"
+                    StrokeButton:
+                        text: "Portrait"
+                    StrokeButton:
+                        text: "Typography"
+                    StrokeButton:
+                        text: "Landscape"
+                    StrokeButton:
+                        text: "Collage"
+                    StrokeButton:
+                        text: "under 30"
+                    StrokeButton:
+                        text: "Sculpture"
+            BoxLayout:
+#                canvas.before:
+#                    Color:
+#                        rgba: (1, 0, 0, 0.2)
+#                    Rectangle:
+#                        size: self.size
+#                        pos: self.pos
+                size_hint: 1, .4
+                orientation: "vertical"
+                spacing: 5
+                Label:
+                    text: "Your monthly plan"
+                    font_size: 20
+                    size_hint: 1, .4
+                    color: (0, 0, 0, 1)
+                BoxLayout:
+                    spacing: 10
+                    padding: 5
+                    StrokeButton:
+                        text: "5$"
+                    StrokeButton:
+                        text: "10$"
+                    StrokeButton:
+                        text: "Medici"
+#<RoundedButton@Button>
+#    background_color: (0,0,0,0)
+#    background_normal: ''
+#    back_color: (1,1,1,1)
+#    border_radius: [20]
+#    canvas.before:
+#        Color:
+#            rgba: self.back_color
+#        RoundedRectangle:
+#            size: self.size
+#            pos: self.pos
+#            radius: self.border_radius
+
+<StrokeButton@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    stroke_color: (0, 0, 0, 1)
+    stroke_width: 1.0
+    stroke_radius: 20
+    color: self.stroke_color
+    canvas.before:
+        Color:
+            rgba: self.stroke_color
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.stroke_radius)
+            width: self.stroke_width
