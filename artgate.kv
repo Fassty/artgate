@@ -35,7 +35,7 @@
                     text: "How much art do you want?"
                     font_size: 20
                     color: (0, 0, 0, 1)
-                StrokeButton:
+                StrokeButtonLarge:
                     text: "I want it all yeah yeah yeah, I want it all, I want it all and I want it now..."
                     stroke_color: (0, 0, 0, 1)
                     stroke_width: 1.05
@@ -88,23 +88,24 @@
                     cols: 3
                     spacing: 10
                     padding: 5
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Painting"
-                    StrokeButton:
+                        stroke_width: 10
+                    StrokeButtonSmall:
                         text: "Illustration"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Photography"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Portrait"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Typography"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Landscape"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Collage"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "under 30"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Sculpture"
             BoxLayout:
 #                canvas.before:
@@ -124,33 +125,55 @@
                 BoxLayout:
                     spacing: 10
                     padding: 5
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "5$"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "10$"
-                    StrokeButton:
+                    StrokeButtonSmall:
                         text: "Medici"
-#<RoundedButton@Button>
-#    background_color: (0,0,0,0)
-#    background_normal: ''
-#    back_color: (1,1,1,1)
-#    border_radius: [20]
-#    canvas.before:
-#        Color:
-#            rgba: self.back_color
-#        RoundedRectangle:
-#            size: self.size
-#            pos: self.pos
-#            radius: self.border_radius
 
-<StrokeButton@Button>
+<RoundedButtonSmall@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    back_color: (1, 1, 1, 1)
+    border_radius: [20]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<StrokeButtonSmall@HoverBehavior, Button>
     background_color: (0, 0, 0, 0)
     background_normal: ''
     stroke_color: (0, 0, 0, 1)
-    stroke_width: 1.0
-    stroke_radius: 20
+    stroke_width: 0.95
+    stroke_radius: 17
     color: self.stroke_color
     canvas.before:
+        Color:
+            rgba: (0.3, 0.64, 0.92, 0)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [17]
+    canvas.after:
+        Color:
+            rgba: self.stroke_color
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.stroke_radius)
+            width: self.stroke_width
+
+<StrokeButtonLarge@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    stroke_color: (0, 0, 0, 1)
+    stroke_width: 1.1
+    stroke_radius: 20
+    color: self.stroke_color
+    canvas.after:
         Color:
             rgba: self.stroke_color
         Line:
