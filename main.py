@@ -1,9 +1,7 @@
 import os
 import sys
 from kivy.config import Config
-from kivy.resources import resource_add_path, resource_find
-from artgate.img_utils import load_images_to_categories
-from artgate.constants import CATEGORIES
+from kivy.resources import resource_add_path
 from artgate.platform.utils import get_platform_connector
 
 connector = get_platform_connector()
@@ -29,9 +27,7 @@ from kivy.core.window import Window
 from artgate.widgets.buttons import StrokeButtonSmall, StrokeButtonLarge
 # noinspection PyUnresolvedReferences
 from artgate.widgets.sliders import OverlaySlider
-
-IMAGES = load_images_to_categories('data/images/zdroje')
-ACTIVE_CATEGORIES = {cat: False for cat in CATEGORIES}
+from artgate.executors.wallpaper_changer import WallPaperChanger
 
 
 class MainScreen(Widget):
@@ -39,6 +35,8 @@ class MainScreen(Widget):
 
 
 class ArtGateApp(App):
+    def on_start(self):
+        WallPaperChanger(connector, 'data/images/zdroje').start()
 
     def build(self):
         Window.size = (overlay_x, overlay_y)

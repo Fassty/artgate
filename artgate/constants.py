@@ -3,11 +3,11 @@ CATEGORIES = [
     'illustration',
     'photography',
     'portrait',
-    'typography',
-    'landscape',
-    'collage',
-    'under 30',
-    'sculpture'
+    # 'typography',
+    # 'landscape',
+    # 'collage',
+    # 'under 30',
+    # 'sculpture'
 ]
 
 
