@@ -9,25 +9,11 @@
                 pos: self.pos
         size: root.width, root.height
         BoxLayout:
-#            canvas.before:
-#                Color:
-#                    rgba: (0, 0, 0, 0.2)
-#                Rectangle:
-#                    size: self.size
-#                    pos: self.pos
             size_hint: 0.6, 0.8
-            anchor_x: "center"
-            anchor_y: "center"
             orientation: "vertical"
             spacing: 5
             padding: [0, 20, 0, 0]
             BoxLayout:
-#                canvas.before:
-#                    Color:
-#                        rgba: (0, 0, 1, 0.2)
-#                    Rectangle:
-#                        size: self.size
-#                        pos: self.pos
                 orientation: "vertical"
                 size_hint: 1, 0.4
                 spacing: 5
@@ -42,35 +28,16 @@
                     color: (0, 0, 0, 1)
                     stroke_radius: 15
             BoxLayout:
-#                canvas.before:
-#                    Color:
-#                        rgba: (0, 1, 0, 0.2)
-#                    Rectangle:
-#                        size: self.size
-#                        pos: self.pos
                 orientation: "vertical"
                 size_hint: 1, 0.4
                 Label:
                     text: "How much overlay do you want?"
                     font_size: 20
                     color: (0, 0, 0, 1)
-                Slider:
-                    id: slider1
-                    min: 0
-                    max: 1
-                    step: 1
+                OverlaySlider:
                     padding: 0.265 * self.size[0]
-                    sensitivity: "all"
                     cursor_size: (0.5 * self.size[0], self.size[1])
-                    on_value: root.slide_it(*args)
-                    cursor_image: root.slider_image
             BoxLayout:
-#                canvas.before:
-#                    Color:
-#                        rgba: (1, 0, 0, 0.2)
-#                    Rectangle:
-#                        size: self.size
-#                        pos: self.pos
                 orientation: "vertical"
                 spacing: 5
                 Label:
@@ -79,12 +46,6 @@
                     size_hint: 1, .2
                     color: (0, 0, 0, 1)
                 GridLayout:
-#                    canvas.before:
-#                        Color:
-#                            rgba: (1, 0, 0, 0.4)
-#                        Rectangle:
-#                            size: self.size
-#                            pos: self.pos
                     cols: 3
                     spacing: 10
                     padding: 5
@@ -108,12 +69,6 @@
                     StrokeButtonSmall:
                         text: "Sculpture"
             BoxLayout:
-#                canvas.before:
-#                    Color:
-#                        rgba: (1, 0, 0, 0.2)
-#                    Rectangle:
-#                        size: self.size
-#                        pos: self.pos
                 size_hint: 1, .4
                 orientation: "vertical"
                 spacing: 5
@@ -131,6 +86,22 @@
                         text: "10$"
                     StrokeButtonSmall:
                         text: "Medici"
+    AnchorLayout:
+        size: root.width, root.height
+        anchor_x: "right"
+        anchor_y: "top"
+        BoxLayout:
+            size_hint: .1, .095
+            padding: 5
+            spacing: 5
+            orientation: "horizontal"
+            anchor_x: "right"
+            anchor_y: "top"
+            MinimizeButton:
+                stroke_radius: 19
+            ExitButton:
+                stroke_radius: 19
+
 
 <RoundedButtonSmall@Button>
     background_color: (0, 0, 0, 0)
