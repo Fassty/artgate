@@ -1,0 +1,20 @@
+{
+  "1 second": {
+    "value_in_sec": 1
+  },
+  "10 seconds": {
+    "value_in_sec": 10
+  },
+  "1 minute": {
+    "value_in_sec": 60
+  },
+  "10 minutes": {
+    "value_in_sec": 600
+  },
+  "1 hour": {
+    "value_in_sec": 3600
+  },
+  "1 day": {
+    "value_in_sec": 86400
+  }
+}

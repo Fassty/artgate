@@ -1,0 +1,19 @@
+<ImageButton>
+    orientation: "vertical"
+    size_hint: None, None
+    size: "40dp", "40dp"
+    padding: 0, 0, 0, 0
+
+    MDRoundFlatButton:
+        text: ""
+        line_color: "white"
+        size_hint: 1, 1
+        padding: 0, 0, 0, 0
+        on_release: root.btn_function()
+        Image:
+            size_hint: 1, 1
+            source: root.source
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            mipmap: True
+            allow_stretch: True

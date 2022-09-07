@@ -1,4 +1,7 @@
+import itertools
 import sys
+from typing import Iterable
+
 from artgate.platform import *
 from artgate.constants import PlatformType
 
@@ -20,3 +23,7 @@ def determine_platform() -> str:
 def get_platform_connector() -> AbstractEnvConnector:
     platform: str = determine_platform()
     return PLATFORM_CONNECTOR_MAPPING[platform]()
+
+
+def flatten(lst):
+    return list(itertools.chain(*lst))

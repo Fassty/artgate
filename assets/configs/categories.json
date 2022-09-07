@@ -1,0 +1,35 @@
+{
+  "Painting": {
+    "images": ["painting"]
+  },
+  "Illustration": {
+    "images": ["illustration"]
+  },
+  "Photography": {
+    "images": ["photography"]
+  },
+  "Portrait": {
+    "images": ["portrait"]
+  },
+  "Typography": {
+    "images": []
+  },
+  "Landscape": {
+    "images": []
+  },
+  "Collage": {
+    "images": []
+  },
+  "under 30": {
+    "images": []
+  },
+  "Sculpture": {
+    "images": ["one", "two", "three"]
+  },
+  "Modern Art": {
+    "images": []
+  },
+  "Architecture": {
+    "images": []
+  }
+}

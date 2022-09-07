@@ -1,0 +1,38 @@
+<SingleChoiceButton>
+    orientation: "vertical"
+    size_hint: None, None
+    size: "120dp", "60dp"
+    padding: "12dp", "10dp", "12dp", "16dp"
+
+    MDRoundFlatButton:
+        size_hint: 1, 1
+        text: root.text
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex("#363535")
+        on_release: app.root.set_active_frequency(root)
+        line_color:
+            app.theme_cls.primary_color \
+            if root.active else app.theme_cls.bg_darkest
+        md_bg_color:
+            app.theme_cls.primary_color \
+            if root.active else app.theme_cls.bg_light
+
+<MultiChoiceButton>
+    orientation: "vertical"
+    size_hint_x: 0.33
+    size_hint_y: None
+    height: "60dp"
+    padding: "12dp", "10dp", "12dp", "10dp"
+
+    MDRoundFlatButton:
+        size_hint: 1, 1
+        text: root.text
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex("#363535")
+        on_release: app.root.set_active_category(root)
+        line_color:
+            app.theme_cls.primary_color \
+            if root.active else app.theme_cls.bg_darkest
+        md_bg_color:
+            app.theme_cls.primary_color \
+            if root.active else app.theme_cls.bg_light

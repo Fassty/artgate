@@ -1,0 +1,26 @@
+#:import ImageButton artgate.components.buttons.image_button
+#:import App kivy.app
+#:import SvgWidget artgate.components.svg.svg_widget
+
+<TopBar>
+    size_hint_y: None
+    height: "56dp"
+    spacing: "0dp"
+    padding: "5dp", 0, "5dp", 0
+
+    Image:
+        source: "assets/images/icons/ag_logo_small.png"
+        mipmap: True
+        size_hint: None, None
+        size: "120dp", "40dp"
+        pos_hint: {"center_y": .55}
+        allow_stretch: True
+        keep_ratio: False
+
+    Widget:
+
+    ImageButton:
+        draggable: False
+        source: "assets/images/icons/exit_icon_small.png"
+        btn_function: app.stop
+        pos_hint: {"center_y": .55}

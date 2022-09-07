@@ -1,0 +1,41 @@
+<ScrollBar>
+    size_hint_y: None
+    height: "60dp"
+    do_scroll_x: False
+    effect_cls: "ScrollEffect"
+    padding: 0, 0, 0, 0
+    bar_width: 120
+    bar_height: 40
+    Slider:
+        min: 0
+        max: len(root.values) - 1
+        step: 1
+        sensitivity: "all"
+        cursor_image: ""
+        cursor_size: 0, 0
+        padding: root.bar_width / 2 + 1
+        TitleLabel:
+            canvas.before:
+                RoundedRectangle:
+                    size: root.bar_width, root.bar_height
+                    pos: self.parent.value_pos[0] - root.bar_width / 2, self.parent.center_y - root.bar_height / 2
+                    radius: [root.bar_height / 2]
+                Color:
+                    rgba: app.theme_cls.bg_darkest
+                SmoothLine:
+                    rounded_rectangle: (self.parent.value_pos[0] - root.bar_width / 2, self.parent.center_y - root.bar_height / 2, root.bar_width, root.bar_height, root.bar_height / 2)
+                    width: 1
+            center_x: self.parent.value_pos[0]
+            center_y: root.center_y + self.font_size
+            text: root.names[int(self.parent.value)]
+            adaptive_height: True
+            font_style: "Body1"
+        Image:
+            pos: (self.parent.value_pos[0] + root.bar_width / 2 - self.size[0] / 2 - 1, self.parent.center_y - root.bar_height / 2 - 1.5) if self.parent.value <= self.parent.max / 2 else (self.parent.value_pos[0] - root.bar_width / 2 - self.size[0] / 2 + 1, self.parent.center_y - root.bar_height / 2 - 1.5)
+            source: "assets/images/icons/arrow.png"
+            mipmap: True
+            size_hint: None, None
+            size: "30dp", root.bar_height
+            allow_stretch: True
+            keep_ratio: False
+            color: app.theme_cls.bg_darkest
