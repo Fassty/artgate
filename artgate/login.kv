@@ -16,10 +16,6 @@
                 adaptive_size: True
                 pos_hint: {"center_x": .5}
 
-            Widget:
-                size_hint_y: None
-                height: "10dp"
-
             MDTextField:
                 id: username_field
                 write_tab: False
@@ -27,25 +23,13 @@
                 hint_text: "USERNAME"
                 on_text_validate: password_field.focus = True
 
-            MDRelativeLayout:
-                size_hint: 1, None
-                height: password_field.height
-
-                MDTextField:
-                    id: password_field
-                    write_tab: False
-                    multiline: False
-                    hint_text: "PASSWORD"
-                    password: True
-
-                MDIconButton:
-                    icon: "eye-off"
-                    pos_hint: {"center_y": .5}
-                    pos: password_field.width - self.width + dp(8), 0
-                    theme_text_color: "Hint"
-                    on_release:
-                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
-                        password_field.password = False if password_field.password is True else True
+            # TODO: use PasswordField here
+            MDTextField:
+                id: password_field
+                write_tab: False
+                multiline: False
+                hint_text: "PASSWORD"
+                password: True
 
             MDLabel:
                 id: error_message

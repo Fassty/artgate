@@ -6,6 +6,8 @@ from kivy.core.window import Window
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.screen import MDScreen
 
+from artgate.components.password_field import PasswordField
+
 
 class LoginScreen(ThemableBehavior, MDScreen):
     def __init__(self, app_dir: str = '', *args, **kwargs):

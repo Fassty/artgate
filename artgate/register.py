@@ -19,12 +19,20 @@ class RegisterScreen(ThemableBehavior, MDScreen):
         self.ids.error_message.text = ''
         username = self.ids.username_field.text
 
+        if username == '':
+            self.ids.error_message.text = "Username can't be empty"
+            return
+
         if username in self._user_data['users']:
             self._warn_user_exists(username)
             return
 
         password = self.ids.password_field.text.encode('utf-8')
         password_2 = self.ids.password_field_2.text.encode('utf-8')
+
+        if password.decode('utf-8') == '':
+            self.ids.error_message.text = "Password can't be empty"
+            return
 
         if password != password_2:
             self._warn_passwords_not_matching()

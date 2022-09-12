@@ -1,8 +1,8 @@
 from kivy.properties import StringProperty, BooleanProperty, NumericProperty, DictProperty, ObjectProperty
 from kivy.core.window import Window
+from kivymd.uix.behaviors.focus_behavior import FocusBehavior
 
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.behaviors import FocusBehavior
 
 
 class SingleChoiceButton(FocusBehavior, MDBoxLayout):

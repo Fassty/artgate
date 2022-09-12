@@ -1,6 +1,6 @@
 from kivy.core.window import Window
 from kivy.properties import StringProperty, ObjectProperty
-from kivymd.uix.behaviors import FocusBehavior
+from kivymd.uix.behaviors.focus_behavior import FocusBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 
 
