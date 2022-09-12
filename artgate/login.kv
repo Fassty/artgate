@@ -1,0 +1,80 @@
+<LoginScreen>
+
+    MDBoxLayout:
+
+        padding: "250dp", "0dp", "250dp", "24dp"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            pos_hint: {"center_x": .5, "center_y": .6}
+            spacing: "8dp"
+            adaptive_height: True
+
+            MDLabel:
+                text: "Welcome to ArtGate"
+                font_style: "H5"
+                adaptive_size: True
+                pos_hint: {"center_x": .5}
+
+            Widget:
+                size_hint_y: None
+                height: "10dp"
+
+            MDTextField:
+                id: username_field
+                write_tab: False
+                multiline: False
+                hint_text: "USERNAME"
+                on_text_validate: password_field.focus = True
+
+            MDRelativeLayout:
+                size_hint: 1, None
+                height: password_field.height
+
+                MDTextField:
+                    id: password_field
+                    write_tab: False
+                    multiline: False
+                    hint_text: "PASSWORD"
+                    password: True
+
+                MDIconButton:
+                    icon: "eye-off"
+                    pos_hint: {"center_y": .5}
+                    pos: password_field.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                        password_field.password = False if password_field.password is True else True
+
+            MDLabel:
+                id: error_message
+                text: ""
+                color: "red"
+                height: "40dp"
+
+            MDBoxLayout:
+                size_hint: 1, 1
+                adaptive_height: True
+                padding: "32dp"
+                spacing: "32dp"
+
+                MDRoundFlatButton:
+                    size_hint: 1, 1
+                    text: "Log In"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#363535")
+                    line_color: app.theme_cls.bg_darkest
+                    md_bg_color: app.theme_cls.bg_light
+                    on_press: root.try_log_in()
+
+                MDRoundFlatButton:
+                    size_hint: 1, 1
+                    text: "Sign Up"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#363535")
+                    line_color: app.theme_cls.bg_darkest
+                    md_bg_color: app.theme_cls.bg_light
+                    on_press:
+                        root.manager.current = "register_screen"
+

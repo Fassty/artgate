@@ -10,72 +10,77 @@
         orientation: "vertical"
         TopBar:
             id: top_bar
-
-        MDBoxLayout:
-
-            ScrollView:
-                id: main_scroll_panel
-
-                MDBoxLayout:
-                    adaptive_height: True
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        padding: "200dp", "24dp", "200dp", "24dp"
-                        adaptive_height: True
-
-                        TitleLabel:
-                            text: "How much art do you want?"
-                            adaptive_height: True
-                            font_style: "H5"
-
-                        ScrollView:
-                            size_hint_y: None
-                            height: "60dp"
-                            effect_cls: "ScrollEffect"
-
-                            MDGridLayout:
-                                id: freq_box
-                                rows: 1
-                                size_hint_x: None
-                                width: self.minimum_width
-                                padding: "12dp", 0, 0, 0
-
-
-                        TitleLabel:
-                            text: "What do you want to see?"
-                            adaptive_height: True
-                            font_style: "H5"
-
-                        ScrollView:
-                            effect_cls: "ScrollEffect"
-                            size_hint: None, None
-                            width: "500dp"
-                            height: "200dp"
-
-                            MDGridLayout:
-                                id: category_box
-                                cols: 3
-                                size_hint_y: None
-                                height: self.minimum_height
-                                padding: 0, "12dp", 0, 0
-
-                        TitleLabel:
-                            text: "Example of scrollbar"
-                            adaptive_height: True
-                            font_style: "H5"
-
-                        ScrollBar:
-                            id: freq_bar
-                            bar_width: 140
-                            bar_height: 35
-
-<LoginScreen>
-    MDBoxLayout:
-        orientation: "vertical"
-        TopBar:
-            id: top_bar
-        MDRoundFlatButton:
+        ScreenManager:
             size_hint: 1, 1
-            text: "Click me"
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex("#363535")
+            id: screen_manager
+
+            LoginScreen:
+                app_dir: root._app_dir
+                name: 'login_screen'
+
+            MainScreen:
+                app_dir: root._app_dir
+                name: 'main_screen'
+
+            RegisterScreen:
+                app_dir: root._app_dir
+                name: 'register_screen'
+
+<MainScreen>
+    MDBoxLayout:
+
+        ScrollView:
+            id: main_scroll_panel
+
+            MDBoxLayout:
+                adaptive_height: True
+                MDBoxLayout:
+                    orientation: "vertical"
+                    padding: "200dp", "24dp", "200dp", "24dp"
+                    adaptive_height: True
+
+                    TitleLabel:
+                        text: "How much art do you want?"
+                        adaptive_height: True
+                        font_style: "H5"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: "60dp"
+                        effect_cls: "ScrollEffect"
+
+                        MDGridLayout:
+                            id: freq_box
+                            rows: 1
+                            size_hint_x: None
+                            width: self.minimum_width
+                            padding: "12dp", 0, 0, 0
+
+
+                    TitleLabel:
+                        text: "What do you want to see?"
+                        adaptive_height: True
+                        font_style: "H5"
+
+                    ScrollView:
+                        effect_cls: "ScrollEffect"
+                        size_hint: None, None
+                        width: "500dp"
+                        height: "200dp"
+
+                        MDGridLayout:
+                            id: category_box
+                            cols: 3
+                            size_hint_y: None
+                            height: self.minimum_height
+                            padding: 0, "12dp", 0, 0
+
+                    TitleLabel:
+                        text: "Example of scrollbar"
+                        adaptive_height: True
+                        font_style: "H5"
+
+                    ScrollBar:
+                        id: freq_bar
+                        bar_width: 140
+                        bar_height: 35

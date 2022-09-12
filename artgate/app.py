@@ -18,12 +18,13 @@ from artgate.components.top_bar import TopBar
 from artgate.platform.utils import get_platform_connector, flatten
 
 
-class ArtGate(ThemableBehavior, MDScreen):
-    def __init__(self, app_dir, *args, **kwargs):
+class MainScreen(ThemableBehavior, MDScreen):
+    def __init__(self, app_dir: str = '', *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bg_changer_event = None
         self._app_dir = app_dir
         self.platform_connector = get_platform_connector()
+        self._was_setup = False
 
     def _change_wallpaper(self, *args, **kwargs):
         active_widgets = [widget for widget in self.ids.category_box.children if widget.active]
@@ -59,11 +60,11 @@ class ArtGate(ThemableBehavior, MDScreen):
                 widget.active = not widget.active
 
     def on_enter(self):
-        self.list_frequencies()
-        self.list_categories()
-        self.create_scroll_bar()
-        Window.custom_titlebar = True
-        Window.set_custom_titlebar(self.ids.top_bar)
+        if not self._was_setup:
+            self.list_frequencies()
+            self.list_categories()
+            self.create_scroll_bar()
+            self._was_setup = True
 
     def list_frequencies(self):
         with open(os.path.join(self._app_dir, 'assets', 'configs', 'frequencies.json')) as freq_data:
@@ -96,3 +97,15 @@ class ArtGate(ThemableBehavior, MDScreen):
                 values.append(freq_data[name]['value_in_sec'])
         self.ids.freq_bar.values = values
         self.ids.freq_bar.names = names
+
+
+class ArtGate(ThemableBehavior, MDScreen):
+    def __init__(self, app_dir: str = '', *args, **kwargs):
+        self.bg_changer_event = None
+        self._app_dir = app_dir
+        self.platform_connector = get_platform_connector()
+        super().__init__(*args, **kwargs)
+
+    def on_enter(self):
+        Window.custom_titlebar = True
+        Window.set_custom_titlebar(self.ids.top_bar)

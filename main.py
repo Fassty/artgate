@@ -19,10 +19,10 @@ Config.set('graphics', 'position', 'custom')
 
 from kivymd.app import MDApp
 from kivy.core.window import Window
-from kivy.uix.screenmanager import ScreenManager
 
 from artgate.app import ArtGate
 from artgate.login import LoginScreen
+from artgate.register import RegisterScreen
 
 
 class ArtGateApp(MDApp):
@@ -36,11 +36,7 @@ class ArtGateApp(MDApp):
         Window.shape_color_key = [0, 1, 0, 1]
         Window.borderless = True
 
-        screen_manager = ScreenManager()
-
-        screen_manager.add_widget(ArtGate(self.directory, name='main_screen'))
-
-        return screen_manager
+        return ArtGate(self.directory)
 
     def load_all_kv_strings(self):
         for d, dirs, files in os.walk(self.directory):

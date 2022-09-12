@@ -1,0 +1,116 @@
+<RegisterScreen>
+
+    MDBoxLayout:
+
+        padding: "250dp", "24dp", "250dp", "24dp"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            spacing: "4dp"
+            adaptive_height: True
+
+            MDLabel:
+                text: "Create an account"
+                font_style: "H5"
+                adaptive_size: True
+                pos_hint: {"center_x": .5}
+
+            MDTextField:
+                id: username_field
+                write_tab: False
+                multiline: False
+                hint_text: "USERNAME"
+                on_text_validate: password_field.focus = True
+
+            MDTextField:
+                write_tab: False
+                multiline: False
+                hint_text: "E-MAIL"
+
+            MDRelativeLayout:
+                size_hint: 1, None
+                height: password_field.height
+
+                MDTextField:
+                    id: password_field
+                    write_tab: False
+                    multiline: False
+                    hint_text: "PASSWORD"
+                    password: True
+
+                MDIconButton:
+                    icon: "eye-off"
+                    pos_hint: {"center_y": .5}
+                    pos: password_field.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                        password_field.password = False if password_field.password is True else True
+
+
+            MDRelativeLayout:
+                size_hint: 1, None
+                height: password_field_2.height
+
+                MDTextField:
+                    id: password_field_2
+                    write_tab: False
+                    multiline: False
+                    hint_text: "PASSWORD AGAIN"
+                    password: True
+
+                MDIconButton:
+                    icon: "eye-off"
+                    pos_hint: {"center_y": .5}
+                    pos: password_field_2.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                        password_field_2.password = False if password_field_2.password is True else True
+
+            MDRelativeLayout:
+                size_hint: 1, None
+                height: tos_checkbox.height
+
+                MDCheckbox:
+                    id: tos_checkbox
+                    size_hint: None, None
+                    pos_hint: {"center_x": .02}
+                    size: "48dp", "48dp"
+
+                MDLabel:
+                    pos_hint: {"center_y": .5}
+                    pos: tos_checkbox.width - dp(16), 0
+                    text: "Accept terms of service"
+
+            MDLabel:
+                id: error_message
+                text: ""
+                color: "red"
+                height: "30dp"
+
+            MDBoxLayout:
+                size_hint: 1, 1
+                adaptive_height: True
+                padding: "32dp"
+                spacing: "32dp"
+
+                MDRoundFlatButton:
+                    size_hint: 1, 1
+                    text: "Log In"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#363535")
+                    line_color: app.theme_cls.bg_darkest
+                    md_bg_color: app.theme_cls.bg_light
+                    on_press:
+                        root.manager.current = "login_screen"
+
+                MDRoundFlatButton:
+                    size_hint: 1, 1
+                    text: "Sign In"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#363535")
+                    line_color: app.theme_cls.bg_darkest
+                    md_bg_color: app.theme_cls.bg_light
+                    on_press: root.try_register()
