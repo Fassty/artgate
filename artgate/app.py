@@ -63,7 +63,9 @@ class MainScreen(ThemableBehavior, MDScreen):
         if not self._was_setup:
             self.list_frequencies()
             self.list_categories()
-            self.create_scroll_bar()
+
+            # Scroll bar is not used
+            #self.create_scroll_bar()
             self._was_setup = True
 
     def list_frequencies(self):
