@@ -10,6 +10,7 @@ from kivymd.uix.screen import MDScreen
 class RegisterScreen(ThemableBehavior, MDScreen):
     def __init__(self, app_dir: str = '', *args, **kwargs):
         super().__init__(*args, **kwargs)
+        Window.bind(on_key_down=self._on_key_down)
         self._app_dir = app_dir
 
         with open(os.path.join(self._app_dir, '.userdata.json')) as f:
@@ -65,3 +66,7 @@ class RegisterScreen(ThemableBehavior, MDScreen):
 
     def _warn_tos_not_accepted(self):
         self.ids.error_message.text = "Accept the fucking TOS, sell us your soul."
+
+    def _on_key_down(self, instance, keyboard, keycode, text, modifiers):
+        if self.ids.password_field_2.focus and keycode == 40:
+            self.try_register()

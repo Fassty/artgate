@@ -28,21 +28,13 @@
                 multiline: False
                 hint_text: "E-MAIL"
 
-            # TODO: use PasswordField here
-            MDTextField:
+            PasswordField:
                 id: password_field
-                write_tab: False
-                multiline: False
                 hint_text: "PASSWORD"
-                password: True
 
-            # TODO: use PasswordField here
-            MDTextField:
+            PasswordField:
                 id: password_field_2
-                write_tab: False
-                multiline: False
                 hint_text: "PASSWORD AGAIN"
-                password: True
 
             MDBoxLayout:
                 size_hint: 1, 1
@@ -76,6 +68,7 @@
                     line_color: app.theme_cls.bg_darkest
                     md_bg_color: app.theme_cls.bg_light
                     on_press:
+                        root.manager.transition.direction = 'right'
                         root.manager.current = "login_screen"
 
                 MDRoundFlatButton:

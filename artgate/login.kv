@@ -23,13 +23,9 @@
                 hint_text: "USERNAME"
                 on_text_validate: password_field.focus = True
 
-            # TODO: use PasswordField here
-            MDTextField:
+            PasswordField:
                 id: password_field
-                write_tab: False
-                multiline: False
                 hint_text: "PASSWORD"
-                password: True
 
             MDLabel:
                 id: error_message
@@ -60,5 +56,6 @@
                     line_color: app.theme_cls.bg_darkest
                     md_bg_color: app.theme_cls.bg_light
                     on_press:
+                        root.manager.transition.direction = 'left'
                         root.manager.current = "register_screen"
 
